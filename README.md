@@ -19,3 +19,16 @@ To run this code, you need to have the following libraries:
 * opencv
 * PIL
 * numpy
+
+## Usage
+* Experiment in Fer2013 dataset:
+```
+python main_fer2013.py
+```
+  
+* Experiment in Fer2013 dataset:
+```
+python main_oulu.py
+```
+
+* Experiment in CK+ dataset:
