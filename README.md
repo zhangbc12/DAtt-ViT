@@ -8,9 +8,9 @@
 </p>
 
 ## Datasets
-* Oulu-CASIA:(https://www.oulu.fi/cmvs/node/41316)
-* FER2013:(https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge/data)
-* CK+:(http://www.jeffcohn.net/Resources/)
+* Oulu-CASIA:https://www.oulu.fi/cmvs/node/41316
+* FER2013:https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge/data
+* CK+:http://www.jeffcohn.net/Resources/
 
 ## Prerequisites
 To run this code, you need to have the following libraries:
@@ -19,6 +19,9 @@ To run this code, you need to have the following libraries:
 * opencv
 * PIL
 * numpy
+
+## Pretrained model
+Pretrained model can be download from:https://pan.baidu.com/s/1HvoXaCHI-kw18MsvrbU2Wg  Password:datt
 
 ## Usage
 * Experiment in Fer2013 dataset:
