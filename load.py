@@ -27,7 +27,7 @@ def load_ck(data_dir, size_image):
     return data_x, data_y
 
 def load_oulu(data_dir):
-    print("\n\tLoading anno")
+    print("\n\tLoading OULU")
 
     persons = os.listdir(data_dir)
     folders = [[] for _ in range(10)]
@@ -61,31 +61,31 @@ def list_to_tensor(data, labels, size_image):
 
     return data_x, data_y
 
-unloader = transforms.ToPILImage()
-def tensor_to_PIL(tensor):
-    numpy = tensor.numpy()
-    image = Image.fromarray(numpy())
-    return image
-
 transform = transforms.Compose([
         transforms.Resize(224),
         transforms.ToTensor()
     ])
 
 def rotate(img_tensor, angle):
+    transform = transforms.Compose([
+        transforms.Resize(224),
+        transforms.ToTensor()
+    ])
     for i in range(len(img_tensor)):
-        img_PIL = tensor_to_PIL(img_tensor[i])
-        # img = img_PIL.rotate(angle)
-        img_tensor[i] = transform(img_PIL)
+        img_PIL = transforms.ToPILImage()(img_tensor[i]).convert('RGB')
+        img_rotate = img_PIL.rotate(angle)
+        img_rotate_tensor =transform(img_rotate)
+        img_crop = img_rotate_tensor[:, 15: -15, 15: -15]
+        img_crop_PIL = transforms.ToPILImage()(img_crop).convert('RGB')
+        img_tensor[i] = transform(img_crop_PIL)
     return img_tensor
 
 
 def get_rotate(imgs):
     img_tensor_1, img_tensor_2, img_tensor_3 = imgs.clone(), imgs.clone(), imgs.clone()
     img_tensor_2 = rotate(img_tensor_2, 10)
-    img_tensor_3 = rotate(img_tensor_3, 20)
+    img_tensor_3 = rotate(img_tensor_3, -10)
     return img_tensor_1, img_tensor_2, img_tensor_3
-
 
 
 if __name__ == '__main__':
